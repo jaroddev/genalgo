@@ -9,7 +9,6 @@ class Mutation:
     @abstractmethod
     def mutate(self, chromosome: Chromosome):
         """ Mutate the given chromosome"""
-        pass
 
 
 class NotEnoughAllelesError(ValueError):
