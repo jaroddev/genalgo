@@ -7,8 +7,6 @@ class ChromosomeTest(unittest.TestCase):
         eight_zero_chromosome = [0,0,0,0 ,0,0,0,0]
         chromosome = Chromosome(eight_zero_chromosome)
         
-        print(chromosome)
-
         self.assertEqual(
             len(chromosome.alleles),
             8
@@ -21,6 +19,7 @@ class ChromosomeTest(unittest.TestCase):
 
     def test_increase_aging(self):
         chromosome = Chromosome()     
+
         chromosome.inc_age()
 
         self.assertEqual(1, chromosome.age)

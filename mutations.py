@@ -12,6 +12,10 @@ class Mutation:
         pass
 
 
+class NotEnoughAllelesError(ValueError):
+    """ Raised when you try to change more alleles than there actually exists."""
+
+
 class Flip(Mutation):
 
     def __init__(self, n: int) -> None:
@@ -22,7 +26,7 @@ class Flip(Mutation):
         # Check that their is at least n value to flip
         size = len(chromosome.alleles)
         if self.n > size:
-            raise ValueError(f"{self.n} flip are too many flips for a chromosome of size of {size}")
+            raise NotEnoughAllelesError(f"{self.n} flip are too many flips for a chromosome of size of {size}")
 
         # Get n locuses to flip
         locuses = sample(

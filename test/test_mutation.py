@@ -1,7 +1,7 @@
 import unittest
 from genetic import Chromosome
 
-from mutations import FlipFactory, FlipNotAllowedError
+from mutations import FlipFactory, FlipNotAllowedError, NotEnoughAllelesError
 
 
 class FlipFactoryTest(unittest.TestCase):
@@ -9,11 +9,9 @@ class FlipFactoryTest(unittest.TestCase):
     def setUp(self) -> None:
         self.factory = FlipFactory()
 
-    def non_allowed_flip(self):
-        self.assertRaises(
-            FlipNotAllowedError,
+    def test_non_allowed_flip(self):
+        with self.assertRaises(FlipNotAllowedError):
             self.factory.create_flip_mutation(2)
-        )
 
 
 class FlipTest(unittest.TestCase):
@@ -45,8 +43,14 @@ class FlipTest(unittest.TestCase):
                     flipped_alleles
                 )
     
-    def test_fail(self):
-        pass
+    def test_not_enough_alleles(self):
+        two_zero_chromosome = [0, 0]
+        chromosome = Chromosome(two_zero_chromosome)
+        
+        with self.assertRaises(NotEnoughAllelesError):
+            self.three_flip.mutate(chromosome)
+
+
 
 if __name__ == "__main__":
     unittest.main()
