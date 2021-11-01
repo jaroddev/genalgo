@@ -14,6 +14,17 @@ class ChromosomeTest(unittest.TestCase):
             8
         )
 
+    def test_default_aging(self):
+        chromosome = Chromosome()
+
+        self.assertEqual(0, chromosome.age)
+
+    def test_increase_aging(self):
+        chromosome = Chromosome()     
+        chromosome.inc_age()
+
+        self.assertEqual(1, chromosome.age)
+
 
 if __name__ == "__main__":
     unittest.main()
