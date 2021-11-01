@@ -51,6 +51,5 @@ class FlipTest(unittest.TestCase):
             self.three_flip.mutate(chromosome)
 
 
-
 if __name__ == "__main__":
     unittest.main()
