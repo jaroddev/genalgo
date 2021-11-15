@@ -1,5 +1,10 @@
 # GenAlgo (Genetic ALGOrithm)
 
+## DEPRECATION NOTICE - UNMAINTAINED
+
+The code in this project was not well coded and too much boilerplate was introduced.
+Thus it shall be archived and a new project will see the light, with the goal of being less boilerplate and easier to make evolve
+
 ## Installation instructions
 
 Run the following commands to install the requirements:
