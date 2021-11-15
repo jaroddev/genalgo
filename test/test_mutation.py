@@ -1,5 +1,5 @@
 import unittest
-from genetic import Chromosome
+from genetic.chromosomes import Chromosome
 
 from mutations import FlipFactory, FlipNotAllowedError, NotEnoughAllelesError
 

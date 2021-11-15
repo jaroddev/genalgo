@@ -1,13 +1,31 @@
 from abc import abstractmethod, abstractproperty
+from typing import Callable
 
-from chromosomes import Chromosome
+from genetic.chromosomes import Chromosome
 
-class GeneticAlgorithm():
+class GAParameters:
+
+    def __init__(
+        self, 
+        mutation_strategy: MutationStrategy,
+        mutation_probability: Callable[[float], bool],
+        crossover_strategy: ,
+
+    ) -> None:
+
+        self.mutation_strategy = mutation_strategy
+
+        self.crossover_strategy = crossover_strategy
+
+        self.mutation_strategy = mutation_strategy
+
+
+class GA():
     """ Template for building generic genetic algorithm based solution"""
 
     def __init__(
         self,
-        fixed_size: int = 1,
+        parameters: GAParameters
     ) -> None:
 
         """ Initialize the algorithm parameters
@@ -18,15 +36,13 @@ class GeneticAlgorithm():
         """
 
         self.population: list[Chromosome] = []
+      
+        self.parameters = parameters
 
-        # population fixed size -> maximum and minimum
-        self.fixed_size = fixed_size
-        
         # cycle
         self.cycle = 1
 
         # Last cycle the best was updated
-        # must think of another name
         self.last_update = 1
         self.best_chromosome = None
 
@@ -51,10 +67,6 @@ class GeneticAlgorithm():
         """ Create a population of random chromosomes (solutions)"""
 
     @abstractmethod
-    def mutate(self):
-        pass
-
-    @abstractmethod
     def crossover(self):
         pass
 
@@ -68,6 +80,13 @@ class GeneticAlgorithm():
         
             Also serve as a way to make the population a fixed size
         """
+
+    def __mutate(self):
+        """ Mutate a whole population"""
+
+        for _, chromosome in range(self.population):
+            if self.parameters.mutation_probability(randint(0, 1)):
+               self.parameters.mutation.mutate(chromosome)
 
     def __update_best_chromosome(self):
         # If it is the first time the function is called then the first chromosome is the best           
@@ -94,10 +113,11 @@ class GeneticAlgorithm():
 
         while (not self.should_be_stopped):
             # if mutation probability is met for the chromosome 
-            self.mutate()
+            self.__mutate()
+            self.parameters.mutation_strategy.mutate(self.population)
 
             # if crossover probability is met
-            self.crossover()
+            self.self.parameters.crossover_strategy.crossover()
             
             # prepare for survival
             self.fit()

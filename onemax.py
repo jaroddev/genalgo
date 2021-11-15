@@ -1,10 +1,10 @@
 from random import randint, random
-from genetic import Chromosome, GeneticAlgorithm
+from genetic import Chromosome, GA
 
 from mutations import FlipFactory, Mutation
 
 
-class OneMax(GeneticAlgorithm):
+class OneMax(GA):
 
     def __init__(self, fixed_size: int = 1, chromosome_size:int = 8) -> None:
         super().__init__(fixed_size=fixed_size)

@@ -1,14 +1,8 @@
-from abc import abstractmethod
+
 from random import sample
 
-from genetic import Chromosome
-
-
-class Mutation:
-
-    @abstractmethod
-    def mutate(self, chromosome: Chromosome):
-        """ Mutate the given chromosome"""
+from genetic.chromosomes import Chromosome
+from genetic.mutations import Mutation
 
 
 class NotEnoughAllelesError(ValueError):
@@ -47,7 +41,6 @@ class Flip(Mutation):
 
 class FlipNotAllowedError(ValueError):
     """ is raised if Flip factory cannot crate a flip mutation"""
-
 
 class FlipFactory:
     """ Make sure only allowed Flip can be created"""
