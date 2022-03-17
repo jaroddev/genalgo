@@ -2,8 +2,14 @@
 
 ## DEPRECATION NOTICE - UNMAINTAINED
 
-The code in this project was not well coded and too much boilerplate was introduced.
-Thus it shall be archived and a new project will see the light, with the goal of being less boilerplate and easier to make evolve
+This project was moved to another repository. Indeed, the design of the application was not fitting the actual needs.
+It was split into two projects, projects you can find at those URLs:
+ - https://github.com/jaroddev/evolugo
+ - https://github.com/jaroddev/evotest
+
+Evolugo is the micro-framework/library part, to implement a genetic algorithm.
+Evotest is an implementation example of a problem with evolugo, the Onemax problem, 
+it also contains few resources to do some benchmarks.
 
 ## Installation instructions
 
